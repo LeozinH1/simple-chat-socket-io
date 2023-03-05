@@ -51,7 +51,6 @@
       socket.on("chat message", function (msg, ipaddress) {
         var item = document.createElement("li");
         item.textContent = msg;
-        messages.appendChild(item);
 
         let apiKey = "950f3fec283e4991be9f0c313e57e75a";
         $.getJSON(
@@ -60,6 +59,8 @@
             if (data.ip_address == ipaddress) {
               item.classList.add("self");
             }
+
+            messages.appendChild(item);
           }
         );
 
