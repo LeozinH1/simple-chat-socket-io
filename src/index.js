@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 
 io.on("connection", (socket) => {
   socket.on("chat message", (msg) => {
-    var address = socket.handshake.address.address;
+    var address = socket.request.connection.remoteAddress;
     io.emit("chat message", msg, address);
   });
 });
