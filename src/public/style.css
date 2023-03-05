@@ -42,7 +42,7 @@ body {
 }
 
 .chat ul li {
-  background: #1a1a1a;
+  background: linear-gradient(to right, #8500ff, #a900ff);
   padding: 15px;
   border-radius: 5px;
   margin-right: 15px;
@@ -51,6 +51,7 @@ body {
 
 .self {
   align-self: flex-end;
+  background: linear-gradient(to right, #1a1a1a, #222222);
 }
 
 .chat form {
