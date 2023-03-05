@@ -8,7 +8,24 @@
     <div class="main">
       <div class="chat">
         <h2>Simple chat with Socket.io</h2>
-        <ul id="messages"></ul>
+        <ul id="messages">
+          <li>dwefdew</li>
+          <li>dwefdew</li>
+          <li>dwefdew</li>
+          <li>dwefdew</li>
+          <li>dwefdew</li>
+          <li>dwefdew</li>
+          <li>dwefdew</li>
+          <li>dwefdew</li>
+          <li>dwefdew</li>
+          <li>dwefdew</li>
+          <li>dwefdew</li>
+          <li>dwefdew</li>
+          <li>dwefdew</li>
+          <li>dwefdew</li>
+          <li>dwefdew</li>
+          <li>dwefdew</li>
+        </ul>
 
         <form id="form" action="">
           <input
@@ -20,11 +37,21 @@
       </div>
     </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
     <script
       src="https://cdn.socket.io/4.4.1/socket.io.min.js"
       integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H"
       crossorigin="anonymous"
     ></script>
+    <script>
+      $(document).ready(function () {
+        $("#messages").animate(
+          { scrollTop: document.body.scrollHeight },
+          "slow"
+        );
+      });
+    </script>
     <script src="script.js"></script>
     <script>
       var socket = io();
@@ -45,7 +72,10 @@
         var item = document.createElement("li");
         item.textContent = msg;
         messages.appendChild(item);
-        window.scrollTo(0, document.body.scrollHeight);
+        $("#messages").animate(
+          { scrollTop: document.body.scrollHeight },
+          "slow"
+        );
       });
     </script>
   </body>
