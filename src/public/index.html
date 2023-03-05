@@ -54,7 +54,7 @@
         messages.appendChild(item);
 
         fetch("https://chat-socketio.herokuapp.com/ipaddress").then((res) => {
-          console.log("my ip: " + res.data.ip);
+          console.log("my ip: " + res);
           console.log("message ip: " + ipaddress);
 
           if (res.ip == ipaddress) {
