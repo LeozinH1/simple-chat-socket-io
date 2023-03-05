@@ -11,7 +11,8 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", function (socket) {
-  console.log(socket.request.connection.remoteAddress);
+  var ip = socket.handshake.headers["x-real-ip"];
+  console.log(ip);
 });
 
 io.on("connection", (socket) => {
