@@ -11,11 +11,11 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  var sHeaders = socket.handshake.headers;
-  console.info("[%s] connected!", sHeaders["x-forwarded-for"]);
+  var ipaddress = socket.handshake.headers["x-forwarded-for"];
+  console.info("%s connected!", ipaddress);
 
   socket.on("chat message", (msg) => {
-    io.emit("chat message", msg);
+    io.emit("chat message", msg, ipaddress);
   });
 });
 
