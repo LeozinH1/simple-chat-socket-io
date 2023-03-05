@@ -51,7 +51,7 @@ body {
 
 .self {
   align-self: flex-end;
-  background: linear-gradient(to right, #1a1a1a, #222222);
+  background: linear-gradient(to right, #1a1a1a, #222222) !important;
 }
 
 .chat form {
