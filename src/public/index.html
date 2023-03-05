@@ -57,6 +57,19 @@
 
         console.log(ipaddress);
 
+        var myip = $.getJSON(
+          "https://chat-socketio.herokuapp.com/ipaddress",
+          function (data) {
+            console.log(data.ip);
+          }
+        );
+
+        var myip = fetch("https://chat-socketio.herokuapp.com/ipaddress").then(
+          (res) => res.json()
+        );
+
+        console.log(myip);
+
         $("#messages").animate(
           { scrollTop: document.body.scrollHeight },
           "slow"
