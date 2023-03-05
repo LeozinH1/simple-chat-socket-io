@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 app.use(express.static(__dirname + "/public"));
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile("index.html", { root: path.join(__dirname, "public") });
 });
 
 io.on("connection", (socket) => {
