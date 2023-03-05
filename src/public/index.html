@@ -50,10 +50,12 @@
         }
       });
 
-      socket.on("chat message", function (msg) {
+      socket.on("chat message", function (msg, ipaddress) {
         var item = document.createElement("li");
         item.textContent = msg;
         messages.appendChild(item);
+
+        console.log(ipaddress);
 
         $("#messages").animate(
           { scrollTop: document.body.scrollHeight },
