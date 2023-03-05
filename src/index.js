@@ -12,7 +12,8 @@ app.get("/", (req, res) => {
 
 io.on("connection", (socket) => {
   socket.on("chat message", (msg) => {
-    io.emit("chat message", msg);
+    var address = socket.handshake.address;
+    io.emit("chat message", msg, address);
   });
 });
 
