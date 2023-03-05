@@ -10,10 +10,13 @@ app.get("/", (req, res) => {
   res.sendFile("index.html", { root: path.join(__dirname, "public") });
 });
 
+io.on("connection", function (socket) {
+  console.log(socket.request.connection.remoteAddress);
+});
+
 io.on("connection", (socket) => {
   socket.on("chat message", (msg) => {
-    var address = socket.request.connection.remoteAddress;
-    io.emit("chat message", msg, address);
+    io.emit("chat message", msg);
   });
 });
 
