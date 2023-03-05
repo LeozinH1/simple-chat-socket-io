@@ -1,0 +1,16 @@
+{
+  "name": "cls",
+  "version": "yarn --init",
+  "main": "index.js",
+  "author": "LeozinH1",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1"
+  }
+}
