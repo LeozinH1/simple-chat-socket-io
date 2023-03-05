@@ -8,15 +8,23 @@
     <div class="main">
       <div class="chat">
         <h2>Simple chat with Socket.io</h2>
-        <ul id="messages"></ul>
 
-        <form id="form" action="">
-          <input
-            id="input"
-            autocomplete="off"
-            placeholder="Type here..."
-          /><button>Send</button>
-        </form>
+        <div id="entrar">
+          <input type="text" id="username" placeholder="username" />
+          <button onclick="entrar()">Entrar</button>
+        </div>
+
+        <div id="chat" style="flex: 1">
+          <ul id="messages" style="height: 90%; margin-bottom: 10px"></ul>
+
+          <form id="form" action="">
+            <input
+              id="input"
+              autocomplete="off"
+              placeholder="Type here..."
+            /><button>Send</button>
+          </form>
+        </div>
       </div>
     </div>
 
@@ -30,6 +38,8 @@
           { scrollTop: document.body.scrollHeight },
           "slow"
         );
+
+        document.getElementById("chat").style.display = "none";
       });
     </script>
 
@@ -39,30 +49,34 @@
       var messages = document.getElementById("messages");
       var form = document.getElementById("form");
       var input = document.getElementById("input");
+      let localusername = document.getElementById("username");
+
+      function entrar() {
+        if (localusername.value.length >= 3) {
+          document.getElementById("entrar").style.display = "none";
+          document.getElementById("chat").style.display = "block";
+        } else {
+          alert("Digite um nome maior que 3 caracter irmão.");
+        }
+      }
 
       form.addEventListener("submit", function (e) {
         e.preventDefault();
-        if (input.value) {
-          socket.emit("chat message", input.value);
+        if (input.value && localusername.value) {
+          socket.emit("chat message", input.value, localusername.value);
           input.value = "";
         }
       });
 
-      socket.on("chat message", function (msg, ipaddress) {
+      socket.on("chat message", function (msg, username) {
         var item = document.createElement("li");
         item.textContent = msg;
 
-        let apiKey = "950f3fec283e4991be9f0c313e57e75a";
-        $.getJSON(
-          "https://ipgeolocation.abstractapi.com/v1/?api_key=" + apiKey,
-          function (data) {
-            if (data.ip_address == ipaddress) {
-              item.classList.add("self");
-            }
+        if (localusername.value == username) {
+          item.classList.add("self");
+        }
 
-            messages.appendChild(item);
-          }
-        );
+        messages.appendChild(item);
 
         $("#messages").animate(
           { scrollTop: document.body.scrollHeight },
