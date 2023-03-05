@@ -10,6 +10,11 @@ app.get("/", (req, res) => {
   res.sendFile("index.html", { root: path.join(__dirname, "public") });
 });
 
+app.get("/ipaddress", (req, res) => {
+  var ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
+  res.json({ ip });
+});
+
 io.on("connection", (socket) => {
   var ipaddress = socket.handshake.headers["x-forwarded-for"];
   console.info("%s connected!", ipaddress);
