@@ -57,12 +57,7 @@
         $.getJSON(
           "https://ipgeolocation.abstractapi.com/v1/?api_key=" + apiKey,
           function (data) {
-            console.log(JSON.stringify(data, null, 2));
-            console.log("-----------------------------");
-            console.log("my ip: " + data.ip_address);
-            console.log("message ip: " + ipaddress);
-
-            if (res.ip == ipaddress) {
+            if (data.ip_address == ipaddress) {
               item.classList.add("self");
             }
           }
