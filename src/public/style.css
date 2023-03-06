@@ -24,6 +24,33 @@ body {
   gap: 20px;
 }
 
+@media screen and (max-width: 800px) {
+  .wrapper {
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  #entrar {
+    flex-flow: column;
+  }
+
+  #form {
+    flex-flow: column;
+    gap: 20px;
+  }
+
+  .chat {
+    flex: 1;
+  }
+
+  #messages {
+    flex: 1;
+  }
+}
+
 .wrapper h2 {
   color: #4c4c4c;
 }
@@ -99,6 +126,8 @@ input[type="text"] {
   border-radius: 5px;
   color: #fff;
   width: 100%;
+
+  box-sizing: border-box;
 }
 
 button {
