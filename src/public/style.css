@@ -46,6 +46,7 @@ body {
   display: flex;
   flex-flow: column;
   gap: 30px;
+  overflow-wrap: break-word;
 }
 
 .chat ul li {
