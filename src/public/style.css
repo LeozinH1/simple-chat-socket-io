@@ -52,10 +52,6 @@ body {
   .chat {
     flex: 1;
   }
-
-  #messages {
-    flex: 1;
-  }
 }
 
 .wrapper h2 {
