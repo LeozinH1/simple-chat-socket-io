@@ -16,7 +16,6 @@ body {
 
 .wrapper {
   width: 600px;
-  height: 500px;
   border-radius: 10px;
   background: #141414;
   padding: 40px;
@@ -30,23 +29,23 @@ body {
 }
 
 .chat {
-  flex: 1;
-  display: flex;
   flex-flow: column;
   gap: 15px;
 }
 
 .chat ul {
-  flex: 1;
+  display: flex;
+  flex-flow: column;
+  gap: 30px;
+
   list-style-type: none;
   margin: 0;
   padding: 0;
   color: #fff;
   overflow-y: scroll;
-  display: flex;
-  flex-flow: column;
-  gap: 30px;
   overflow-wrap: break-word;
+
+  height: 300px;
 }
 
 .chat ul li {
