@@ -80,6 +80,7 @@ body {
   align-self: center;
   color: #3c3c3c;
   background: none !important;
+  padding: 0px;
 }
 
 .chat form {
