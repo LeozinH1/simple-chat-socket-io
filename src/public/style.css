@@ -35,6 +35,11 @@ body {
 
   #entrar {
     flex-flow: column;
+    justify-content: space-between;
+  }
+
+  input[type="text"] {
+    flex: 0;
   }
 
   #form {
