@@ -76,6 +76,12 @@ body {
   background: linear-gradient(to right, #1a1a1a, #222222) !important;
 }
 
+.notify {
+  align-self: center;
+  color: #3c3c3c;
+  background: none !important;
+}
+
 .chat form {
   display: flex;
   gap: 5px;

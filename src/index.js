@@ -17,6 +17,10 @@ io.on("connection", (socket) => {
   socket.on("chat message", (msg, username) => {
     io.emit("chat message", msg, username);
   });
+
+  socket.on("user join", (username) => {
+    io.emit("user join", username);
+  });
 });
 
 http.listen(port, () => {

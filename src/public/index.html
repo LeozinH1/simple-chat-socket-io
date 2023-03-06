@@ -15,7 +15,9 @@
         </div>
 
         <div class="chat" id="chat">
-          <ul id="messages"></ul>
+          <ul id="messages">
+            <li class="notify">Notification 2</li>
+          </ul>
 
           <form id="form" action="">
             <input
@@ -56,6 +58,8 @@
         if (localusername.value.length >= 3) {
           document.getElementById("entrar").style.display = "none";
           document.getElementById("chat").style.display = "flex";
+
+          socket.emit("user join", localusername.value);
         } else {
           alert("Digite um nome maior que 3 caracter irmão.");
         }
@@ -69,10 +73,22 @@
         }
       });
 
+      socket.on("user join", function (username) {
+        var item = document.createElement("li");
+
+        item.innerHTML = username + " entrou na conversa.";
+        item.classList.add("notify");
+
+        messages.appendChild(item);
+
+        $("#messages").animate({ scrollTop: messages.scrollHeight }, "slow");
+      });
+
       socket.on("chat message", function (msg, username) {
         var item = document.createElement("li");
         var today = new Date();
         var hour = today.getHours() + ":" + today.getMinutes();
+        const audio = new Audio("notify.mp3");
 
         item.innerHTML =
           "<span class='time'>" +
@@ -84,6 +100,9 @@
 
         if (localusername.value == username) {
           item.classList.add("self");
+        } else {
+          audio.volume = 0.01;
+          audio.play();
         }
 
         messages.appendChild(item);
