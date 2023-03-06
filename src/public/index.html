@@ -6,7 +6,7 @@
   </head>
   <body>
     <div class="main">
-      <div class="chat">
+      <div class="wrapper">
         <h2>Simple chat with Socket.io</h2>
 
         <div id="entrar">
@@ -14,11 +14,12 @@
           <button onclick="entrar()">Entrar</button>
         </div>
 
-        <div id="chat" style="flex: 1">
-          <ul id="messages" style="height: 90%; margin-bottom: 10px"></ul>
+        <div class="chat" id="chat">
+          <ul id="messages"></ul>
 
           <form id="form" action="">
             <input
+              type="text"
               id="input"
               autocomplete="off"
               placeholder="Type here..."
@@ -54,7 +55,7 @@
       function entrar() {
         if (localusername.value.length >= 3) {
           document.getElementById("entrar").style.display = "none";
-          document.getElementById("chat").style.display = "block";
+          document.getElementById("chat").style.display = "flex";
         } else {
           alert("Digite um nome maior que 3 caracter irmão.");
         }
@@ -70,7 +71,16 @@
 
       socket.on("chat message", function (msg, username) {
         var item = document.createElement("li");
-        item.textContent = msg;
+        var today = new Date();
+        var hour = today.getHours() + ":" + today.getMinutes();
+
+        item.innerHTML =
+          "<span class='time'>" +
+          hour +
+          "</span><span class='username'>" +
+          username +
+          "</span>" +
+          msg;
 
         if (localusername.value == username) {
           item.classList.add("self");
