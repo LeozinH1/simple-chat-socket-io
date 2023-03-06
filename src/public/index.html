@@ -86,7 +86,7 @@
       socket.on("chat message", function (msg, username) {
         var item = document.createElement("li");
         var today = new Date();
-        var hour = today.getHours() + ":" + today.getMinutes();
+        var hour = today.getUTCHours() + ":" + today.getUTCMinutes();
         const audio = new Audio("notify.mp3");
 
         item.innerHTML =
