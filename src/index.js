@@ -1,9 +1,17 @@
 const express = require("express");
 const app = express();
 const http = require("http").Server(app);
-const io = require("socket.io")(http);
+const io = require("socket.io")(http, {
+  cors: {
+    origin: "*",
+  },
+});
 const port = process.env.PORT || 3000;
+const cors = require("cors");
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cors());
 app.use(express.static(__dirname + "/public"));
 
 app.get("/", (req, res) => {
